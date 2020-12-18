@@ -38,3 +38,5 @@ out/
 
 build/tmp/compileJava/source-classes-mapping.txt
 build/classes/java/main/com/philantree/eventgateway/kafka/InitSend.class
+build/classes/java/main/com/philantree/eventgateway/kafka/InitSend.class
+build/tmp/compileJava/source-classes-mapping.txt
