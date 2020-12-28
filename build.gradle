@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		spockVersion = '2.0-M2-groovy-3.0'
+		springBootVersion = '2.4.1'
+		lombokVersion = '1.18.16'
+		liquibaseVersion = '4.2.2'
+		jacksonVersion = '2.12.0'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.4.1'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'groovy'
+}
+
+group = 'com.philantree'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation (
+			'org.springframework.boot:spring-boot-starter-web',
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+	 		'org.apache.kafka:kafka-streams',
+			'org.springframework.kafka:spring-kafka',
+			"com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+			"com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
+			"org.projectlombok:lombok:$lombokVersion",
+			"org.liquibase:liquibase-core:$liquibaseVersion"
+	)
+	runtimeOnly (
+			'com.h2database:h2'
+	)
+	testImplementation (
+			'org.springframework.boot:spring-boot-starter-test',
+			'org.springframework.kafka:spring-kafka-test',
+			"org.spockframework:spock-core:$spockVersion",
+			"org.spockframework:spock-spring:$spockVersion"
+	)
+}
+
+test {
+	useJUnitPlatform()
+}
