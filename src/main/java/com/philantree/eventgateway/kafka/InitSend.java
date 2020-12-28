@@ -10,7 +10,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 class InitSend {
 
     private final Logger LOG = LoggerFactory.getLogger(getClass());
@@ -59,10 +59,10 @@ class InitSend {
 
         Thread.sleep(5000);
         LOG.info("---------------------------------");
-        kafkaSender.sendCustomMessage(new User("Lucario"), "user-event");
+        kafkaSender.sendCustomMessage(new User("Lucario", "Foo", "foo@email.com"), "user-event");
 
         Thread.sleep(5000);
         LOG.info("---------------------------------");
-        messageConverterSender.sendMessageWithConverter(new GenericMessage<>(new User("Pikachu")));
+        messageConverterSender.sendMessageWithConverter(new GenericMessage<>(new User("Pikachu", "Bar", "bar@email.com")));
     }
 }
